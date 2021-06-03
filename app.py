@@ -11,8 +11,9 @@ import pickle
 import cv2
 import os
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 #the image will be saved in this folder
-UPLOAD_FOLDER = 'C:/Users/Dell/brain_tumour/uploads'
+UPLOAD_FOLDER = os.path.join(dir_path, 'uploads')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__) ## to initialize the flask
@@ -34,10 +35,10 @@ def predict():
     file_path = "No file"
     if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-         
-            #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            
+
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+
+            file.save(file_path)
           
             output = get_result(file_path)
             print("------------------------")
@@ -48,16 +49,18 @@ def predict():
 
 def get_result(file_path):
     '''get the file path and resize the image after that predict using the image'''
-    img = cv2.imread(file_path)
-    img = cv2.resize(img,(224,224))
-    img = np.expand_dims(img,axis=0)    
-    print(model.predict([img]))
-    if model.predict([img])[0][0] == 1:
-        output = "present"
-    else:
-        output = "not present"
-        
-    return output
+    try:
+        img = cv2.imread(file_path)
+        img = cv2.resize(img,(224,224))
+        img = np.expand_dims(img,axis=0)    
+        print(model.predict([img]))
+        if model.predict([img])[0][0] == 1:
+            output = "present"
+        else:
+            output = "not present"
+        return output
+    except Exception as e:
+        print(str(e))
     
 
 def allowed_file(filename):       
