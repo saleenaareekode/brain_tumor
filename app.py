@@ -12,10 +12,11 @@ import cv2
 import os
 
 MYDIR = os.path.dirname(__file__)
-UPLOAD_FOLDER = os.path.join(MYDIR, "/static/uploads")
+print(MYDIR)
+UPLOAD_FOLDER = os.path.join(MYDIR, "uploads")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-app = Flask(__name__,static_url_path="/static") ## to initialize the flask
+app = Flask(__name__) ## to initialize the flask
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
