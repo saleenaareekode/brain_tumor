@@ -11,7 +11,8 @@ import pickle
 import cv2
 import os
 
-UPLOAD_FOLDER = "static/uploads"
+MYDIR = os.path.dirname(__file__)
+UPLOAD_FOLDER = os.path.join(MYDIR, "/static/uploads")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__,static_url_path="/static") ## to initialize the flask
