@@ -12,7 +12,6 @@ import cv2
 import os
 
 MYDIR = os.path.dirname(__file__)
-print(MYDIR)
 UPLOAD_FOLDER = os.path.join(MYDIR, "uploads")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
