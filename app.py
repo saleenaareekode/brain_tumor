@@ -11,12 +11,10 @@ import pickle
 import cv2
 import os
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-#the image will be saved in this folder
-UPLOAD_FOLDER = os.path.join(dir_path, 'uploads')
+UPLOAD_FOLDER = "static/uploads"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-app = Flask(__name__) ## to initialize the flask
+app = Flask(__name__,static_url_path="/static") ## to initialize the flask
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
