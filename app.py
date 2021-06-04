@@ -14,7 +14,7 @@ import os
 UPLOAD_FOLDER = "/tmp"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
-app = Flask(__name__) ## to initialize the flask
+app = Flask(__name__,"/tmp") ## to initialize the flask
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
