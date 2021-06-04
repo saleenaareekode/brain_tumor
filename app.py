@@ -11,7 +11,7 @@ import pickle
 import cv2
 import os
 
-UPLOAD_FOLDER = os.path.join("/tmp", "uploads")
+UPLOAD_FOLDER = "/tmp"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__) ## to initialize the flask
@@ -67,5 +67,5 @@ def allowed_file(filename):
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1",port=5000,threaded=False)
+    app.run(host="127.0.0.1",port=5000,threaded=True)
 
